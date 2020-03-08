@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+/*
         helper.addQuestion(new Question("Which method can be defined only once in a program?" ,
                 "finalize method" , "main method" ,"static method" , "private method" ,"main method"));
 
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         helper.addTFQuestion(new TrueFalseQuestion("we are 9afwet elkolia w elkoliat elmegawra","False"));
         helper.addTFQuestion(new TrueFalseQuestion("we love amer abo hani to the moooon ","True"));
 
-
+*/
         //  Log.i("sec" , helper.getAllNames().toString());
 
         // helper.deleteAll();

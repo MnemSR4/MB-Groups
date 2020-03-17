@@ -14,13 +14,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
-import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import static com.example.ee_exam.SecActivity.*;
 
 
@@ -66,7 +59,7 @@ public class QesFragment extends Fragment {
         randomNum = new RandomNum();
 
 
-        question = questions.get(randomQuestions[Score.flag]);
+        question = questions.get(randomQuestions[Score.indexMCQ]);
         String[] options = new String[]{question.getOption_1(), question.getOption_2(), question.getOption_3(), question.getOption_4()};
         int[] randomOptions = randomNum.createRD(0, 3);
 

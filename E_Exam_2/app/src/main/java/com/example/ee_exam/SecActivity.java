@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SecActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
-    public int counter = 50;
+    public int counter = 500;
     public static List<Question> questions;
     public static List<TrueFalseQuestion> trueFalseQuestionss;
     public static int[] randomQuestions;
@@ -20,6 +20,7 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
     String name;
     public static final String NAME = "NAME";
     Intent intent2;
+    Intent intent1;
     DBHelper helper = new DBHelper(this);
 
     @Override
@@ -74,7 +75,7 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
 
         final TextView textViewTime = findViewById(R.id.edit_text_time);
 
-        new CountDownTimer(50000, 1000) {
+        new CountDownTimer(5000000, 1000) {
             public void onTick(long millisUntilFinished) {
                 textViewTime.setText(String.valueOf(counter));
                 counter--;
@@ -82,16 +83,24 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
 
             public void onFinish() {
                 textViewTime.setText("FINISH!!");
-                intent2 = new Intent(SecActivity.this, ResultActivity.class);
-                intent2.putExtra(LoginActivity.EXTRA_NAME, name);
-                startActivity(intent2);
+                if(Score.correct >= 5) {
+                    intent2 = new Intent(SecActivity.this, ResultSuccessActivity.class);
+                    intent2.putExtra(NAME, name);
+                    startActivity(intent2);
+                    finish();
+                }else {
+                    intent1 = new Intent(SecActivity.this, ResultFailedActivity.class);
+                    intent1.putExtra(NAME, name);
+                    startActivity(intent1);
+                    finish();
+                }
             }
         }.start();
 
         name = getIntent().getStringExtra(MainActivity.EXTRA_NAME);
         TextView textViewName = findViewById(R.id.text_view_name);
 
-        textViewName.setText("Welcome, " + name);
+        textViewName.setText("Welcome, " + name.substring(0,name.indexOf('@')));
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, QesFragment.newInstance()).commit();
     }
@@ -111,8 +120,8 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
             Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
         }
 
-        Score.flag++;
-        if (Score.flag < randomQuestions.length) {
+        Score.indexMCQ++;
+        if (Score.indexMCQ < randomQuestions.length) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, QesFragment.newInstance()).commit();
         }
 
@@ -134,24 +143,38 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
             Toast.makeText(this, "Wrong", Toast.LENGTH_SHORT).show();
         }
 
-        Score.index++;
-        if (Score.index < randomTFQuestions.length) {
+        Score.indexTF++;
+        if (Score.indexTF < randomTFQuestions.length) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, TrueFalseFragment.newInstance()).commit();
         }else{
 
-            intent2 = new Intent(this, ResultActivity.class);
-            intent2.putExtra(NAME, name);
-            startActivity(intent2);
-            finish();
+            if(Score.correct >= 5) {
+                intent2 = new Intent(this, ResultSuccessActivity.class);
+                intent2.putExtra(NAME, name);
+                startActivity(intent2);
+                finish();
+            }else {
+                intent1 = new Intent(this, ResultFailedActivity.class);
+                intent1.putExtra(NAME, name);
+                startActivity(intent1);
+                finish();
+            }
         }
     }
 
     @Override
     public void toNextFragment() {
 
-        intent2 = new Intent(this, ResultActivity.class);
-        intent2.putExtra(NAME, name);
-        startActivity(intent2);
-        finish();
+        if(Score.correct >= 5) {
+            intent2 = new Intent(this, ResultSuccessActivity.class);
+            intent2.putExtra(NAME, name);
+            startActivity(intent2);
+            finish();
+        }else {
+            intent1 = new Intent(this, ResultFailedActivity.class);
+            intent1.putExtra(NAME, name);
+            startActivity(intent1);
+            finish();
+        }
     }
 }

@@ -14,7 +14,7 @@
             android:layout_span="2"
             android:textColor="@color/colorAccent"
             android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@android:style/TextAppearance.Large"
             android:textSize="24sp"/>
     </TableRow>
 
@@ -26,7 +26,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/text_view_namme"
+            android:id="@+id/text_view_namme2"
             android:text="Name : "
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -40,7 +40,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/text_view_wrong"
+            android:id="@+id/text_view_wrong2"
             android:text=" "
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -55,7 +55,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/text_view_correct"
+            android:id="@+id/text_view_correct2"
             android:text=" "
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </TableRow>
@@ -69,9 +69,22 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/text_view_result"
+            android:id="@+id/text_view_result2"
             android:text=" "
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    </TableRow>
+
+    <TableRow android:layout_marginTop="64dp">
+
+        <TextView
+            android:text="FAILED"
+            android:layout_gravity="center_horizontal"
+            android:layout_span="2"
+            android:textColor="@color/failed"
+            android:textStyle="bold"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textSize="48sp"/>
+
     </TableRow>
 
 

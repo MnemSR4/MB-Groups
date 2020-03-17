@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import static com.example.ee_exam.SecActivity.questions;
-import static com.example.ee_exam.SecActivity.randomQuestions;
 import static com.example.ee_exam.SecActivity.randomTFQuestions;
 import static com.example.ee_exam.SecActivity.trueFalseQuestionss;
 
@@ -59,7 +57,7 @@ public class TrueFalseFragment extends Fragment {
         randomNum = new RandomNum();
 
 
-        trueFalseQuestion = trueFalseQuestionss.get(randomTFQuestions[Score.index]);
+        trueFalseQuestion = trueFalseQuestionss.get(randomTFQuestions[Score.indexTF]);
 
         textViewQues.setText(trueFalseQuestion.getQuestion());
 

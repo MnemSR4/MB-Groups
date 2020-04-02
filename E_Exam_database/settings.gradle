@@ -1,0 +1,2 @@
+rootProject.name='E_Exam_database'
+include ':app'

@@ -10,11 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ResultSuccessActivity" >  </activity>
+        <activity android:name=".ProfOptionsActivity" ></activity>
+        <activity android:name=".SelectMCQActivity" />
+        <activity android:name=".UpdateQesMMCQActivity" />
+        <activity android:name=".ProfessorActivity" />
+        <activity android:name=".ResultSuccessActivity" />
         <activity android:name=".ResultFailedActivity" />
         <activity android:name=".SecActivity" />
-        <activity android:name=".Accesscode_student"/>
+        <activity android:name=".Accesscode_student" />
+        <activity android:name=".StudentRegisterActivity" />
+        <activity android:name=".ProfessorRegisterActivity" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".EnterTFQByProf"/>
+        <activity android:name=".EnterQesByProf"/>
+    <activity android:name=".RegisterOptionActivity"/>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>

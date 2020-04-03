@@ -12,11 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.ee_exam.Database.SqliteHelper;
-import com.example.ee_exam.Model.User;
-import com.example.ee_exam.Database.SqliteHelper;
+import com.example.ee_exam.Model.Professor;
+import com.example.ee_exam.Model.Student;
 import com.example.ee_exam.Model.User;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
@@ -58,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     //Authenticate user
                     User currentUser = sqliteHelper.Authenticate(new User(null, null, email, password));
+                    Student currentStudent = sqliteHelper.SELCTED(new Student(null, null, email ,password ,null,null));
+                    Professor currentProf =sqliteHelper.profAuthenticate(new Professor(null,null,email,null,password));
 
                     //Check Authentication is successful or not
                     if (currentUser != null) {
@@ -72,7 +73,19 @@ public class LoginActivity extends AppCompatActivity {
                        /* Intent intent=new Intent(LoginActivity.this,HomeScreenActivity.class);
                         startActivity(intent);
                         finish();*/
-                    } else {
+                    }else if(currentStudent != null){
+                        Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this,Accesscode_student.class);
+                        intent.putExtra(EXTRA_NAME, email);
+                        startActivity(intent);
+
+                    }else if(currentProf != null){
+                        Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this,Accesscode_student.class);
+                        intent.putExtra(EXTRA_NAME, email);
+                        startActivity(intent);
+                    }
+                    else {
 
                         //User Logged in Failed
                         Snackbar.make(buttonLogin, "Failed to log in , please try again", Snackbar.LENGTH_LONG).show();
@@ -95,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
         textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterOptionActivity.class);
                 startActivity(intent);
             }
         });

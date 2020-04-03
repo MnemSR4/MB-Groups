@@ -9,6 +9,16 @@ public class Question {
     private String option_4;
     private String answer;
 
+    public Question(int id, String question, String option_1, String option_2, String option_3, String option_4, String answer) {
+        this.id = id;
+        this.question = question;
+        this.option_1 = option_1;
+        this.option_2 = option_2;
+        this.option_3 = option_3;
+        this.option_4 = option_4;
+        this.answer = answer;
+    }
+
     public Question(String question, String option_1, String option_2, String option_3, String option_4, String answer) {
         this.question = question;
         this.option_1 = option_1;

@@ -14,6 +14,7 @@ import com.example.ee_exam.Database.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static com.example.ee_exam.ExamContract.*;
 
@@ -328,6 +329,51 @@ public class DBHelper extends SQLiteOpenHelper {
                 null);
         db.close();
         Log.i("DBHelper", "deleted....");
+    }
+
+    public void deleteQues(String id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(QuestionEntry.TABLE_NAME ,
+               QuestionEntry.COLUMN_ID + "=?",
+                new String[]{id});
+    }
+
+    public Question getAllQuestion(String id){
+        Question question = null;
+        SQLiteDatabase db =  getReadableDatabase();
+        Cursor cursor =db.query(QuestionEntry.TABLE_NAME ,
+                new String[]{QuestionEntry.COLUMN_ID,QuestionEntry.COLUMN_QUESTION, QuestionEntry.COLUMN_OPTION_1, QuestionEntry.COLUMN_OPTION_2, QuestionEntry.COLUMN_OPTION_3, QuestionEntry.COLUMN_OPTION_4, QuestionEntry.COLUMN_ANSWER},
+                QuestionEntry.COLUMN_ID +"=?",
+                new String[]{id},
+                null,
+                null,
+                null);
+
+        if(cursor != null && cursor.moveToFirst()){
+            question = new Question(cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6));
+        }
+        return question;
+    }
+
+    public void updateQuestion(String id ,String question , String option1 ,String option2, String option3,String option4 ,String answer){
+        SQLiteDatabase db =getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(QuestionEntry.COLUMN_QUESTION ,question );
+        cv.put(QuestionEntry.COLUMN_OPTION_1 ,option1 );
+        cv.put(QuestionEntry.COLUMN_OPTION_2 ,option2 );
+        cv.put(QuestionEntry.COLUMN_OPTION_3 ,option3 );
+        cv.put(QuestionEntry.COLUMN_OPTION_4 ,option4 );
+        cv.put(QuestionEntry.COLUMN_ANSWER ,answer );
+        db.update(QuestionEntry.TABLE_NAME,
+                cv,
+                QuestionEntry.COLUMN_ID + "=?" ,
+                new String[]{id});
     }
 
 }

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Accesscode_student extends AppCompatActivity {
 
@@ -43,11 +44,16 @@ public class Accesscode_student extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String aceess_code = editTextAccessCode.getText().toString();
-                if(aceess_code.equals("ghn_hjkuf")){
+                if(aceess_code.equals("sub")){
                     Intent intent =new Intent(Accesscode_student.this,SecActivity.class);
                     startActivity(intent);
 
-                }
+                }else if(aceess_code.equals("prof")){
+                    Intent intent =new Intent(Accesscode_student.this,ProfOptionsActivity.class);
+                    startActivity(intent);
+
+                }else
+                    Toast.makeText(Accesscode_student.this, "false", Toast.LENGTH_SHORT).show();
             }
         });
 

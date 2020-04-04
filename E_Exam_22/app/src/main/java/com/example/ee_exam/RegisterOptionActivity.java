@@ -16,7 +16,7 @@ public class RegisterOptionActivity extends AppCompatActivity {
 
         Button buttonStudent =findViewById(R.id.button_student);
         Button buttonProf =findViewById(R.id.button_professor);
-        Button buttonadin =findViewById(R.id.button_admin);
+        Button buttonAdmin =findViewById(R.id.button_admin);
 
         buttonStudent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +30,15 @@ public class RegisterOptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(RegisterOptionActivity.this,ProfessorRegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        buttonAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(RegisterOptionActivity.this,RegisterActivity.class);
                 startActivity(intent);
             }
         });

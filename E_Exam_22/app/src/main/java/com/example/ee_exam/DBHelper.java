@@ -376,6 +376,26 @@ public class DBHelper extends SQLiteOpenHelper {
                 new String[]{id});
     }
 
+    public void updateLevel(String id , String levelName)
+    {
+        SQLiteDatabase db =getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(LevelsEntry.COLUMN_NAME,levelName);
+        db.update(LevelsEntry.TABLE_NAME,
+                cv,
+                LevelsEntry.COLUMN_ID + "=?",
+                new String[]{id});
+    }
+    public void updateDepartment(String id , String deptName)
+    {
+        SQLiteDatabase db =getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(LevelsEntry.COLUMN_NAME,deptName);
+        db.update(LevelsEntry.TABLE_NAME,
+                cv,
+                LevelsEntry.COLUMN_ID + "=?",
+                new String[]{id});
+    }
 }
 
 

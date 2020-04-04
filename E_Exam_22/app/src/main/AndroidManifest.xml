@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelectTrueFalse"></activity>
+        <activity android:name=".EditLevelDept"></activity>
+        <activity android:name=".AddLevelDept" />
+        <activity android:name=".AdminOption" />
+        <activity android:name=".SelectTrueFalse" />
         <activity android:name=".ProfOptionsActivity" />
         <activity android:name=".SelectMCQActivity" />
         <activity android:name=".UpdateQesMMCQActivity" />

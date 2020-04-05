@@ -56,7 +56,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //create table bta3 result
         String SQL_CREATE_TABLE_RESULT ="CREATE TABLE IF NOT EXISTS " + ResultEntry.TABLE_NAME + "("+
-                ResultEntry.COLUMN_STUDENT_ID +" INTEGER NOT NULL," +
+                ResultEntry.COLUMN_STUDENT_ID +" INTEGER PRIMARY KEY AUTOINCREMENT ," +
                 ResultEntry.COLUMN_SUBJECT_ACCESS_CODE +" INTEGER NOT NULL," +
                 ResultEntry.COLUMN_MARKS + " INTEGER NOT NULL, " +
                 " FOREIGN KEY (" +
@@ -147,7 +147,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public void addResult(Result result) {
 
         ContentValues cv = new ContentValues();
-        cv.put(ResultEntry.COLUMN_STUDENT_ID, result.getStudent_id());
         cv.put(ResultEntry.COLUMN_SUBJECT_ACCESS_CODE, result.getSubject_access_code());
         cv.put(ResultEntry.COLUMN_MARKS, result.getMarks());
 
@@ -253,7 +252,7 @@ public class DBHelper extends SQLiteOpenHelper {
         List<Result> results =new ArrayList<>();
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor =db.query(ResultEntry.TABLE_NAME,
-                new String[]{ResultEntry.COLUMN_STUDENT_ID,ResultEntry.COLUMN_SUBJECT_ACCESS_CODE,ResultEntry.COLUMN_MARKS},
+                new String[]{ResultEntry.COLUMN_SUBJECT_ACCESS_CODE,ResultEntry.COLUMN_MARKS},
                 null,
                 null,
                 null,
@@ -261,9 +260,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 null);
         if (cursor != null) {
             while (cursor.moveToNext()) {
-                results.add(new Result(cursor.getInt(0),
-                        cursor.getString(1),
-                        cursor.getInt(2)));
+                results.add(new Result(cursor.getString(0),
+                        cursor.getInt(1)));
             }
         }
         return results;
@@ -322,7 +320,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return questions;
     }
 
-    public void deleteAll() {
+    public void deleteAllMCQ() {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(QuestionEntry.TABLE_NAME,
                 null,
@@ -331,12 +329,30 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.i("DBHelper", "deleted....");
     }
 
+    public void deleteAllTF() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TFQuestionEntry.TABLE_NAME,
+                null,
+                null);
+        db.close();
+        Log.i("DBHelper", "deleted....");
+    }
+
+
     public void deleteQues(String id){
         SQLiteDatabase db = getWritableDatabase();
         db.delete(QuestionEntry.TABLE_NAME ,
                QuestionEntry.COLUMN_ID + "=?",
                 new String[]{id});
     }
+
+    public void deleteTureFalseQuestion(String id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TFQuestionEntry.TABLE_NAME ,
+                QuestionEntry.COLUMN_ID + "=?",
+                new String[]{id});
+    }
+
 
     public Question getAllQuestion(String id){
         Question question = null;
@@ -375,6 +391,44 @@ public class DBHelper extends SQLiteOpenHelper {
                 QuestionEntry.COLUMN_ID + "=?" ,
                 new String[]{id});
     }
+
+    public void updateLevel(String id , String levelName)
+    {
+        SQLiteDatabase db =getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(LevelsEntry.COLUMN_NAME,levelName);
+        db.update(LevelsEntry.TABLE_NAME,
+                cv,
+                LevelsEntry.COLUMN_ID + "=?",
+                new String[]{id});
+    }
+
+    public void updateDepartment(String id , String deptName)
+    {
+        SQLiteDatabase db =getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(LevelsEntry.COLUMN_NAME,deptName);
+        db.update(LevelsEntry.TABLE_NAME,
+                cv,
+                LevelsEntry.COLUMN_ID + "=?",
+                new String[]{id});
+    }
+
+    ////update for true false
+
+
+    public void updateTrueandfalseQuestion(String id ,String question, String answer){
+        SQLiteDatabase db =getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(TFQuestionEntry.COLUMN_QUESTION ,question );
+        cv.put(TFQuestionEntry.COLUMN_ANSWER ,answer );
+        db.update(TFQuestionEntry.TABLE_NAME,
+                cv,
+                TFQuestionEntry.COLUMN_ID + "=?" ,
+                new String[]{id});
+    }
+
+
 
 }
 

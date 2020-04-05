@@ -14,7 +14,7 @@ public class ResultSuccessActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_success);
 
-      //  name = getIntent().getStringExtra(SecActivity.NAME);
+        name = getIntent().getStringExtra(SecActivity.NAME);
 
 
         TextView textViewName = findViewById(R.id.text_view_namme);
@@ -23,7 +23,7 @@ public class ResultSuccessActivity extends AppCompatActivity {
         TextView textViewResult = findViewById(R.id.text_view_result);
         TextView textViewFinal = findViewById(R.id.text_view_final);
 
-      //  textViewName.setText(name.substring(0,name.indexOf('@')));
+       textViewName.setText(name.substring(0,name.indexOf('@')));
 
         StringBuffer sb1 = new StringBuffer();
         sb1.append(Score.wrong + "\n");
@@ -33,5 +33,11 @@ public class ResultSuccessActivity extends AppCompatActivity {
         textViewWrong.setText(sb1);
         textViewcorrect.setText(sb2);
         textViewResult.setText(sb2);
+
+        String namme=name.substring(0,name.indexOf('@'));
+
+        DBHelper dbHelper=new DBHelper(this);
+        dbHelper.addResult(new Result(namme,Score.correct));
+
     }
 }

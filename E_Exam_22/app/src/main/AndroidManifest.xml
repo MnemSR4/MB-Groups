@@ -9,11 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".ProfOptionsActivity" ></activity>
+        <activity android:name=".Test"></activity>
+        <activity android:name=".EditLevelDept"/>
+        <activity android:name=".ProfOptionsActivity"/>
+        <activity android:name=".AddLevelDept"/>
+        <activity android:name=".AdminOption"/>
+        <activity android:name=".DeletTruefalseQuestion"/>
+        <activity android:name=".SelectTrueFalse"/>
+        <activity android:name=".UpdateTrueFalseQuestion"/>
+        <activity android:name=".SelectResultActivity"/>
         <activity android:name=".SelectMCQActivity" />
         <activity android:name=".UpdateQesMMCQActivity" />
-        <activity android:name=".ProfessorActivity" />
+        <activity android:name=".DeletemcqActivity" />
         <activity android:name=".ResultSuccessActivity" />
         <activity android:name=".ResultFailedActivity" />
         <activity android:name=".SecActivity" />
@@ -21,9 +28,9 @@
         <activity android:name=".StudentRegisterActivity" />
         <activity android:name=".ProfessorRegisterActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".EnterTFQByProf"/>
-        <activity android:name=".EnterQesByProf"/>
-    <activity android:name=".RegisterOptionActivity"/>
+        <activity android:name=".EnterTFQByProf" />
+        <activity android:name=".EnterQesByProf" />
+        <activity android:name=".RegisterOptionActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>

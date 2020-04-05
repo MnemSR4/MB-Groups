@@ -5,8 +5,7 @@ public class Result {
     private String subject_access_code;
     private  int marks;
 
-    public Result(int student_id, String subject_access_code, int marks) {
-        this.student_id = student_id;
+    public Result( String subject_access_code, int marks) {
         this.subject_access_code = subject_access_code;
         this.marks = marks;
     }

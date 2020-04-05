@@ -9,10 +9,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SecActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
-    public int counter = 500;
+    public static int counter = 7200;
+    private static final String FORMAT = "%02d:%02d:%02d";
     public static List<Question> questions;
     public static List<TrueFalseQuestion> trueFalseQuestionss;
     public static int[] randomQuestions;
@@ -75,9 +77,18 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
 
         final TextView textViewTime = findViewById(R.id.edit_text_time);
 
-        new CountDownTimer(5000000, 1000) {
+
+
+        int seconds , minutes;
+
+        new CountDownTimer(7200000, 1000) {
             public void onTick(long millisUntilFinished) {
-                textViewTime.setText(String.valueOf(counter));
+                textViewTime.setText(""+String.format(FORMAT,
+                        TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) - TimeUnit.HOURS.toMinutes(
+                                TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
+                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
+                                TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
                 counter--;
             }
 
@@ -97,10 +108,13 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
             }
         }.start();
 
-       // name = getIntent().getStringExtra(MainActivity.EXTRA_NAME);
+
+        android.text.format.DateFormat.format("hh:mm:ss",counter);
+
+        name = getIntent().getStringExtra(Accesscode_student.Extra_NAME);
         TextView textViewName = findViewById(R.id.text_view_name);
 
-       // textViewName.setText("Welcome, " + name.substring(0,name.indexOf('@')));
+        textViewName.setText("Welcome, " + name.substring(0,name.indexOf('@')));
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, QesFragment.newInstance()).commit();
     }
@@ -150,12 +164,12 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
 
             if(Score.correct >= 5) {
                 intent2 = new Intent(this, ResultSuccessActivity.class);
-             //   intent2.putExtra(NAME, name);
+                intent2.putExtra(NAME, name);
                 startActivity(intent2);
                 finish();
             }else {
                 intent1 = new Intent(this, ResultFailedActivity.class);
-               // intent1.putExtra(NAME, name);
+                intent1.putExtra(NAME, name);
                 startActivity(intent1);
                 finish();
             }
@@ -165,16 +179,22 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
     @Override
     public void toNextFragment() {
 
-        if(Score.correct >= 5) {
+        if (Score.correct >= 5) {
             intent2 = new Intent(this, ResultSuccessActivity.class);
             intent2.putExtra(NAME, name);
             startActivity(intent2);
             finish();
-        }else {
+            DBHelper dbHelper=new DBHelper(this);
+            dbHelper.addResult(new Result(name.substring(0,name.indexOf('@')),Score.correct));
+        } else {
             intent1 = new Intent(this, ResultFailedActivity.class);
             intent1.putExtra(NAME, name);
             startActivity(intent1);
             finish();
+            DBHelper dbHelper=new DBHelper(this);
+            dbHelper.addResult(new Result(name.substring(0,name.indexOf('@')),Score.correct));
         }
     }
+
 }
+

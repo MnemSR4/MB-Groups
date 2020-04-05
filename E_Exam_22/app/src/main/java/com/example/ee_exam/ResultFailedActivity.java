@@ -13,8 +13,7 @@ public class ResultFailedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_failed);
-
-     //   name = getIntent().getStringExtra(SecActivity.NAME);
+           name = getIntent().getStringExtra(SecActivity.NAME);
 
 
         TextView textViewName = findViewById(R.id.text_view_namme2);
@@ -23,7 +22,7 @@ public class ResultFailedActivity extends AppCompatActivity {
         TextView textViewResult = findViewById(R.id.text_view_result2);
 
 
-   //     textViewName.setText(name.substring(0,name.indexOf('@')));
+      textViewName.setText(name.substring(0,name.indexOf('@')));
 
         StringBuffer sb1 = new StringBuffer();
         sb1.append(Score.wrong + "\n");
@@ -33,6 +32,8 @@ public class ResultFailedActivity extends AppCompatActivity {
         textViewWrong.setText(sb1);
         textViewcorrect.setText(sb2);
         textViewResult.setText(sb2);
+       DBHelper dbHelper=new DBHelper(this);
+        dbHelper.addResult(new Result(name,Score.correct));
 /*
         if(Score.correct >= 5)
             textViewFinal.setText("Successful");

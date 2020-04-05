@@ -56,15 +56,15 @@ public class LoginActivity extends AppCompatActivity {
                     String password = editTextPassword.getText().toString();
 
                     //Authenticate user
-                    User currentUser = sqliteHelper.Authenticate(new User(null, null, email, password));
+                    User currentAdmin = sqliteHelper.Authenticate(new User(null, null, email, password));
                     Student currentStudent = sqliteHelper.SELCTED(new Student(null, null, email ,password ,null,null));
                     Professor currentProf =sqliteHelper.profAuthenticate(new Professor(null,null,email,null,password));
 
                     //Check Authentication is successful or not
-                    if (currentUser != null) {
+                    if (currentAdmin != null) {
 
                         Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
-                        Intent intent = new Intent(LoginActivity.this,Accesscode_student.class);
+                        Intent intent = new Intent(LoginActivity.this,AdminOption.class);
                         intent.putExtra(EXTRA_NAME, email);
                         startActivity(intent);
 

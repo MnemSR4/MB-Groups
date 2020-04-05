@@ -33,5 +33,14 @@ public class RegisterOptionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        buttonadin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(RegisterOptionActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

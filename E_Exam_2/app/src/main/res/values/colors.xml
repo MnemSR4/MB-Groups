@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">#344955</color>
-    <color name="colorPrimaryDark">#232F34</color>
-    <color name="colorAccent">#F9AA33</color>
-    <color name="success">#64DD17</color>
-    <color name="failed">#D50000</color>
-</resources>

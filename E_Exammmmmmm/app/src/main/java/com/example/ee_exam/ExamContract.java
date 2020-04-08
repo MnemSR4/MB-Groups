@@ -24,6 +24,7 @@ public class ExamContract {
         public static final String COLUMN_NAME = "subject_name";
         public static final String COLUMN_ACCESS_CODE = "access_code";
         public static final String COLUMN_DEPARTMENT_ID = "department_id";
+        public static final String COLUMN_EXAM_TIME = "exam_time";
     }
 
     public static class ResultEntry{

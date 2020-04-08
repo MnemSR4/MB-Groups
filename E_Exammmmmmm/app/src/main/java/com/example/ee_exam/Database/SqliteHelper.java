@@ -6,9 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.ee_exam.ExamContract;
 import com.example.ee_exam.Model.Professor;
 import com.example.ee_exam.Model.Student;
 import com.example.ee_exam.Model.User;
+import com.example.ee_exam.Subject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SqliteHelper extends SQLiteOpenHelper {
 
@@ -282,6 +287,28 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    public List<Student> getAllStudents(){
+        List<Student> students =new ArrayList<>();
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor =db.query(DataStudent.TABLE_STUDENTS,
+                new String[]{DataStudent.KEY_ID, DataStudent.KEY_USER_NAME, DataStudent.KEY_EMAIL, DataStudent.KEY_PASSWORD,DataStudent.COLUMN_level,DataStudent.COLUMN_DEPARTMENT},
+                null,
+                null,
+                null,
+                null,
+                null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                students.add(new Student(cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5)));
+            }
+        }
+        return students;
+    }
 
 
 

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -117,5 +120,23 @@
         android:text="Show Student Result"
         android:textColor="#FFFFFF" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About Time"
+        android:textSize="16sp"
+        android:layout_marginTop="16sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_edit_exsm_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:text="edit exam time"
+        android:textColor="#FFFFFF" />
+
 
 </LinearLayout>
+</ScrollView>

@@ -2,6 +2,7 @@ package com.example.ee_exam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    public static final String EXTRA_NAME = "EXTRA_NAME";
     //Declaration Edit
     // Texts
 
@@ -62,6 +64,11 @@ public class RegisterActivity extends AppCompatActivity {
                                 finish();
                             }
                         }, Snackbar.LENGTH_LONG);
+
+
+                        Intent intent = new Intent(RegisterActivity.this,AdminOption.class);
+                        intent.putExtra(EXTRA_NAME, UserName);
+                        startActivity(intent);
                     }else {
 
                         //Email exists with email input provided so show error user already exist

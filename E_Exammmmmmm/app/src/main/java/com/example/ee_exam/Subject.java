@@ -6,18 +6,25 @@ public class Subject {
     private String name;
     private String access_code;
     private int department_id;
+    private int examTime;
 
-    public Subject(int subject_id, String name, String access_code, int department_id) {
+    public Subject(int subject_id, String name, String access_code, int department_id, int examTime) {
         this.subject_id = subject_id;
         this.name = name;
         this.access_code = access_code;
         this.department_id = department_id;
+        this.examTime =examTime;
     }
 
-    public Subject(String name, String access_code, int department_id) {
+    public Subject(String name, String access_code, int department_id, int examTime) {
         this.name = name;
         this.access_code = access_code;
         this.department_id = department_id;
+        this.examTime =examTime;
+    }
+
+    public Subject(int examTime) {
+        this.examTime = examTime;
     }
 
     public int getSubject_id() {
@@ -50,6 +57,14 @@ public class Subject {
 
     public void setAccess_code(String access_code) {
         this.access_code = access_code;
+    }
+
+    public int getExamTime() {
+        return examTime;
+    }
+
+    public void setExamTime(int examTime) {
+        this.examTime = examTime;
     }
 
     @Override

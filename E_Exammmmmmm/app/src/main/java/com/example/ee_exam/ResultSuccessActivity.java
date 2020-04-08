@@ -21,7 +21,7 @@ public class ResultSuccessActivity extends AppCompatActivity {
         TextView textViewWrong = findViewById(R.id.text_view_wrong);
         TextView textViewcorrect = findViewById(R.id.text_view_correct);
         TextView textViewResult = findViewById(R.id.text_view_result);
-        TextView textViewFinal = findViewById(R.id.text_view_final);
+
 
        textViewName.setText(name.substring(0,name.indexOf('@')));
 

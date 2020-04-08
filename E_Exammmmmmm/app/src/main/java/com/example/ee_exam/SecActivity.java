@@ -67,7 +67,7 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
 
 
 
-        DBHelper helper = new DBHelper(this);
+        final DBHelper helper = new DBHelper(this);
         questions = helper.getAllQes();
         trueFalseQuestionss = helper.getAllTFQes();
         RandomNum randomNum = new RandomNum();
@@ -77,11 +77,11 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
 
         final TextView textViewTime = findViewById(R.id.edit_text_time);
 
-
+        counter =  helper.getExamTime("sub")*3600;
 
         int seconds , minutes;
 
-        new CountDownTimer(7200000, 1000) {
+        new CountDownTimer(counter*1000, 1000) {
             public void onTick(long millisUntilFinished) {
                 textViewTime.setText(""+String.format(FORMAT,
                         TimeUnit.MILLISECONDS.toHours(millisUntilFinished),
@@ -89,7 +89,7 @@ public class SecActivity extends AppCompatActivity implements OnFragmentInteract
                                 TimeUnit.MILLISECONDS.toHours(millisUntilFinished)),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
                                 TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
-                counter--;
+              counter --;
             }
 
             public void onFinish() {

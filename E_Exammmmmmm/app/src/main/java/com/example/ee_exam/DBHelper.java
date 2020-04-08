@@ -49,6 +49,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 SubjectEntry.COLUMN_ID +  " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 SubjectEntry.COLUMN_NAME + " TEXT NOT NULL, " +
                 SubjectEntry.COLUMN_ACCESS_CODE+" TEXT NOT NULL UNIQUE , "+
+                SubjectEntry.COLUMN_EXAM_TIME +" INTEGER NOT NULL ," +
                 SubjectEntry.COLUMN_DEPARTMENT_ID + " INTEGER NOT NULL, FOREIGN KEY (" +
                 SubjectEntry.COLUMN_DEPARTMENT_ID + ")  REFERENCES " +
                 DepartmentEntry.TABLE_NAME + "(" +
@@ -128,13 +129,14 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.i("DBHelper", "added DEP....");
     }
 
-    //method insert el subjects
+    //method insert  to table subjects
     public void addSubject(Subject subject) {
 
         ContentValues cv = new ContentValues();
         cv.put(SubjectEntry.COLUMN_NAME, subject.getName());
         cv.put(SubjectEntry.COLUMN_ACCESS_CODE, subject.getAccess_code());
         cv.put(SubjectEntry.COLUMN_DEPARTMENT_ID, subject.getDepartment_id());
+        cv.put(SubjectEntry.COLUMN_EXAM_TIME, subject.getExamTime());
 
 
         SQLiteDatabase db = getWritableDatabase();
@@ -231,7 +233,7 @@ public class DBHelper extends SQLiteOpenHelper {
         List<Subject> subjects =new ArrayList<>();
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor =db.query(SubjectEntry.TABLE_NAME,
-                new String[]{SubjectEntry.COLUMN_NAME,SubjectEntry.COLUMN_ACCESS_CODE,SubjectEntry.COLUMN_DEPARTMENT_ID},
+                new String[]{SubjectEntry.COLUMN_NAME,SubjectEntry.COLUMN_ACCESS_CODE,SubjectEntry.COLUMN_DEPARTMENT_ID,SubjectEntry.COLUMN_EXAM_TIME},SubjectEntry.COLUMN_EXAM_TIME,
                 null,
                 null,
                 null,
@@ -241,10 +243,30 @@ public class DBHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 subjects.add(new Subject(cursor.getString(0),
                         cursor.getString(1),
-                        cursor.getInt(2)));
+                        cursor.getInt(2),
+                        cursor.getInt(3)));
             }
         }
         return subjects;
+    }
+
+    //method select exam time
+    public int getExamTime(String accessCode){
+        int examTime = 0;
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor =db.query(SubjectEntry.TABLE_NAME,
+                new String[]{SubjectEntry.COLUMN_EXAM_TIME},
+                SubjectEntry.COLUMN_ACCESS_CODE +"=?",
+                new String[]{accessCode},
+                null,
+                null,
+                null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                examTime =(cursor.getInt(0));
+            }
+        }
+        return examTime;
     }
 
     //method select result (student_id , subject_access_code , marks)
@@ -265,6 +287,25 @@ public class DBHelper extends SQLiteOpenHelper {
             }
         }
         return results;
+    }
+
+    public List<Result> getAllResultById(String id){
+        List<Result> resultList =new ArrayList<>();
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor =db.query(ResultEntry.TABLE_NAME,
+                new String[]{ResultEntry.COLUMN_SUBJECT_ACCESS_CODE,ResultEntry.COLUMN_MARKS},
+                ResultEntry.COLUMN_STUDENT_ID +"=?",
+                new String[]{id},
+                null,
+                null,
+                null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                resultList.add(new Result(cursor.getString(0),
+                        cursor.getInt(1)));
+            }
+        }
+        return resultList;
     }
 
 //select tf ques
@@ -289,6 +330,30 @@ public class DBHelper extends SQLiteOpenHelper {
             }
         }
         return trueFalseQuestions;
+    }
+
+    //select tf ques
+    public List<TrueFalseQuestion> getAllTFQesById(String id){
+        List<TrueFalseQuestion> trueFalseQuestionList = new ArrayList<>();
+
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.query(TFQuestionEntry.TABLE_NAME,
+                new String[]{TFQuestionEntry.COLUMN_QUESTION, TFQuestionEntry.COLUMN_ANSWER},
+                TFQuestionEntry.COLUMN_ID +"=?",
+                new String[]{id},
+                null,
+                null,
+                null);
+
+        if (cursor != null){
+            while (cursor.moveToNext()) {
+                trueFalseQuestionList.add(new TrueFalseQuestion(
+                        cursor.getString(0),
+                        cursor.getString(1)));
+
+            }
+        }
+            return trueFalseQuestionList;
     }
 
 //select mcq ques
@@ -354,8 +419,8 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public Question getAllQuestion(String id){
-        Question question = null;
+    public List<Question> getAllQuestion(String id){
+        List <Question> questions =new ArrayList<>();
         SQLiteDatabase db =  getReadableDatabase();
         Cursor cursor =db.query(QuestionEntry.TABLE_NAME ,
                 new String[]{QuestionEntry.COLUMN_ID,QuestionEntry.COLUMN_QUESTION, QuestionEntry.COLUMN_OPTION_1, QuestionEntry.COLUMN_OPTION_2, QuestionEntry.COLUMN_OPTION_3, QuestionEntry.COLUMN_OPTION_4, QuestionEntry.COLUMN_ANSWER},
@@ -366,15 +431,15 @@ public class DBHelper extends SQLiteOpenHelper {
                 null);
 
         if(cursor != null && cursor.moveToFirst()){
-            question = new Question(cursor.getInt(0),
+            questions.add( new Question(cursor.getInt(0),
                     cursor.getString(1),
                     cursor.getString(2),
                     cursor.getString(3),
                     cursor.getString(4),
                     cursor.getString(5),
-                    cursor.getString(6));
+                    cursor.getString(6)));
         }
-        return question;
+        return questions;
     }
 
     public void updateQuestion(String id ,String question , String option1 ,String option2, String option3,String option4 ,String answer){
@@ -429,6 +494,18 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    ////update exam time
+
+
+    public void updateExamTime(String accessCode ,int examTime){
+        SQLiteDatabase db =getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(SubjectEntry.COLUMN_EXAM_TIME ,examTime );
+        db.update(SubjectEntry.TABLE_NAME,
+                cv,
+                SubjectEntry.COLUMN_ACCESS_CODE + "=?" ,
+                new String[]{accessCode});
+    }
 
 }
 

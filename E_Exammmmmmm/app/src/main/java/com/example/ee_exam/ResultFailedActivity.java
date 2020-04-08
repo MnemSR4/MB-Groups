@@ -33,14 +33,7 @@ public class ResultFailedActivity extends AppCompatActivity {
         textViewcorrect.setText(sb2);
         textViewResult.setText(sb2);
        DBHelper dbHelper=new DBHelper(this);
-        dbHelper.addResult(new Result(name,Score.correct));
-/*
-        if(Score.correct >= 5)
-            textViewFinal.setText("Successful");
-        else
-            textViewFinal.setText("Failed");
-
- */
+        dbHelper.addResult(new Result(name.substring(0,name.indexOf('@')),Score.correct));
 
 
     }

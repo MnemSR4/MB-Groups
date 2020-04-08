@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ee_exam.Database.SqliteHelper;
+
 public class Accesscode_student extends AppCompatActivity {
 
     String name;
@@ -22,6 +24,7 @@ public class Accesscode_student extends AppCompatActivity {
         name=getIntent().getStringExtra(LoginActivity.EXTRA_NAME);
 
  DBHelper dbHelper = new DBHelper(this);
+        SqliteHelper helper =new SqliteHelper(this);
         dbHelper.addLevel(new Level("first level"));
         dbHelper.addLevel(new Level("second level"));
         dbHelper.addLevel(new Level("therd level"));
@@ -34,13 +37,15 @@ public class Accesscode_student extends AppCompatActivity {
         dbHelper.addDepartment(new Department("general1",1));
         dbHelper.addDepartment(new Department("general2",7));
 
-//        dbHelper.addSubject(new Subject("computer since","sub",1));
+    //  dbHelper.addSubject(new Subject("computer since","sub",1,7200));
        // dbHelper.addResult(new Result(1, "5678gvhhch",99));
 
         Log.i("main",dbHelper.getAllLevels().toString());
         Log.i("main",dbHelper.getAllDepartments().toString());
         Log.i("main" ,dbHelper.getAllSubjects().toString());
         Log.i("main" ,dbHelper.getAllResult().toString());
+        Log.i("main" ,helper.getAllStudents().toString());
+
 
         final EditText editTextAccessCode=findViewById(R.id.edit_text_access_code_student);
         Button buttonToExam = findViewById(R.id.to_exam);

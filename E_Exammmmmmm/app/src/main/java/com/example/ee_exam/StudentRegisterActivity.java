@@ -1,5 +1,6 @@
 package com.example.ee_exam;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class StudentRegisterActivity extends AppCompatActivity {
+
+    public static final String EXTRA_NAME = "EXTRA_NAME";
 //Declaration Edit
     // Texts
 
@@ -142,8 +145,11 @@ public class StudentRegisterActivity extends AppCompatActivity {
                     //Check in the database is there any user associated with  this email
                     if (!sqliteHelper.isStudEmailExists(Email)) {
 
+                        if(value.equals("Level 1") || value.equals("Level 2"))
+                            value2="general";
+
                         //Email does not exist now add new user to database
-                        sqliteHelper.addStudent(new Student(null, UserName, Email, Password,value,value));
+                        sqliteHelper.addStudent(new Student(null, UserName, Email, Password,value,value2));
                         Snackbar.make(buttonRegister, "User created successfully! Please Login ", Snackbar.LENGTH_LONG).show();
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -151,6 +157,10 @@ public class StudentRegisterActivity extends AppCompatActivity {
                                 finish();
                             }
                         }, Snackbar.LENGTH_LONG);
+
+                        Intent intent = new Intent(StudentRegisterActivity.this,Accesscode_student.class);
+                        intent.putExtra(EXTRA_NAME, UserName);
+                        startActivity(intent);
                     }else {
 
                         //Email exists with email input provided so show error user already exist

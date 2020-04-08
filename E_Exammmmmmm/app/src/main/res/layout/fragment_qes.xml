@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="32dp"
-    android:background="#FFFFFF"
+    android:background="#E0E0E0"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
 
@@ -63,9 +63,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"
-        android:textColor="#FFFFFF"
         android:background="@color/colorAccent"
         android:layout_marginTop="16dp"
+        android:textColor="#FFFFFF"
         android:layout_gravity="center_horizontal"/>
 
     <TextView

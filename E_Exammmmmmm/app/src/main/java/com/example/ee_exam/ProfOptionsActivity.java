@@ -26,6 +26,8 @@ public class ProfOptionsActivity extends AppCompatActivity {
             //  edit or update True false Question
         Button UpdateTrueFlaseQuestion = findViewById(R.id.button_edittfq);
         Button buttonShowStudentResult =findViewById(R.id.button_show_student_result);
+        Button buttonExamTime =findViewById(R.id.button_edit_exsm_time);
+
 
         buttonInsertMCQ.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +102,14 @@ public class ProfOptionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(ProfOptionsActivity.this,SelectResultActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        buttonExamTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(ProfOptionsActivity.this,ExamTimeActivity.class);
                 startActivity(intent);
 
             }

@@ -23,6 +23,8 @@ public class Student {
         this.option_depatment = option_depatment;
     }
 
+
+
     public String getId() {
         return id;
     }
@@ -69,5 +71,17 @@ public class Student {
 
     public void setOption_depatment(String option_depatment) {
         this.option_depatment = option_depatment;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", option_level='" + option_level + '\'' +
+                ", option_depatment='" + option_depatment + '\'' +
+                '}';
     }
 }

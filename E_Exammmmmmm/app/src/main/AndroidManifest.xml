@@ -11,6 +11,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ExamTimeActivity"></activity>
         <activity android:name=".EditLevelDept" />
+        <activity android:name=".AddSubject"/>
+        <activity android:name=".DeletProfessor"/>
+        <activity android:name=".SelectProfessor"/>
+        <activity android:name=".UpdateSubject"/>
         <activity android:name=".ProfOptionsActivity" />
         <activity android:name=".AddLevelDept" />
         <activity android:name=".AdminOption" />

@@ -31,5 +31,40 @@ public class AdminOption extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button buttonSelectProf = findViewById(R.id.button_show_prof);
+        buttonSelectProf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminOption.this,SelectProfessor.class);
+                startActivity(intent);
+            }
+        });
+
+        Button buttonDeleteProf = findViewById(R.id.button_delete_prof);
+        buttonDeleteProf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminOption.this,DeletProfessor.class);
+                startActivity(intent);
+            }
+        });
+
+        Button buttonAddSub = findViewById(R.id.button_add_sub);
+        buttonAddSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminOption.this,AddSubject.class);
+                startActivity(intent);
+            }
+        });
+
+        Button buttonEditSub = findViewById(R.id.button_edit_sub);
+        buttonEditSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminOption.this,UpdateSubject.class);
+                startActivity(intent);
+            }
+        });
     }
 }

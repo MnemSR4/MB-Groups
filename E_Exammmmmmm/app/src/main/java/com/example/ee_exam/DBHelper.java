@@ -243,7 +243,7 @@ public class DBHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 subjects.add(new Subject(cursor.getString(0),
                         cursor.getString(1),
-                        cursor.getInt(2),
+                        cursor.getString(2),
                         cursor.getInt(3)));
             }
         }
@@ -506,6 +506,26 @@ public class DBHelper extends SQLiteOpenHelper {
                 SubjectEntry.COLUMN_ACCESS_CODE + "=?" ,
                 new String[]{accessCode});
     }
+
+    // udate to table subject
+
+    public void updateSubject(String id ,String name , String acess_code ,String exame_time){
+        SQLiteDatabase db =getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(SubjectEntry.COLUMN_DEPARTMENT_ID ,id);
+        cv.put(SubjectEntry.COLUMN_NAME ,name);
+        cv.put(SubjectEntry.COLUMN_ACCESS_CODE ,acess_code );
+        cv.put(SubjectEntry.COLUMN_EXAM_TIME,exame_time);
+
+        db.update(SubjectEntry.TABLE_NAME,
+                cv,
+                SubjectEntry.COLUMN_ACCESS_CODE + "=?" ,
+                new String[]{acess_code});
+
+
+
+    }
+
 
 }
 

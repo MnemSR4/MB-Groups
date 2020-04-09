@@ -6,12 +6,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About Departments and Levels"
+        android:layout_marginTop="16dp"/>
+
     <Button
         android:id="@+id/button_add_level_dept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="add levels and departments"
         android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="16dp"
         android:layout_gravity="center_horizontal"/>
 
@@ -21,7 +28,65 @@
         android:layout_height="wrap_content"
         android:text="edit levels and departments"
         android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="16dp"
         android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About Professors"
+        android:layout_marginTop="16dp"/>
+
+
+    <Button
+        android:id="@+id/button_show_prof"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="show all professors"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/button_delete_prof"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="delete professors"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"/>
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="About Subjects"
+    android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/button_add_sub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add subject"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/button_edit_sub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="edit subject data"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"/>
+
+
+
+
 
 </LinearLayout>

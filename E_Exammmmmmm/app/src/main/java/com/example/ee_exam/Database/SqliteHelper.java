@@ -311,6 +311,44 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
 
 
+    public void deletePOF(String id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(DataProfesspor.TABLE_profssor ,
+                DataProfesspor.KEY_ID+ "=?",
+                new String[]{id});
+    }
+
+    public void deleteAllProf() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(DataProfesspor.TABLE_profssor,
+                null,
+                null);
+        db.close();
+
+    }
+
+    // select for table professors
+    public List<Professor> getAllProfesors(){
+        List<Professor> professors =new ArrayList<>();
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor =db.query(DataProfesspor.TABLE_profssor,
+                new String[]{DataProfesspor.KEY_ID, DataProfesspor.KEY_USER_NAME,DataProfesspor.KEY_EMAIL,DataProfesspor.KEY_SUBJECT,DataProfesspor.KEY_PASSWORD},
+                null,
+                null,
+                null,
+                null,
+                null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                professors.add(new Professor(cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4)));
+            }
+        }
+        return professors;
+    }
 
 
 

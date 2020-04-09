@@ -5,10 +5,10 @@ public class Subject {
     private int subject_id;
     private String name;
     private String access_code;
-    private int department_id;
+    private String department_id;
     private int examTime;
 
-    public Subject(int subject_id, String name, String access_code, int department_id, int examTime) {
+    public Subject(int subject_id, String name, String access_code, String department_id, int examTime) {
         this.subject_id = subject_id;
         this.name = name;
         this.access_code = access_code;
@@ -16,7 +16,7 @@ public class Subject {
         this.examTime =examTime;
     }
 
-    public Subject(String name, String access_code, int department_id, int examTime) {
+    public Subject(String name, String access_code, String department_id, int examTime) {
         this.name = name;
         this.access_code = access_code;
         this.department_id = department_id;
@@ -43,11 +43,11 @@ public class Subject {
         this.name = name;
     }
 
-    public int getDepartment_id() {
+    public String getDepartment_id() {
         return department_id;
     }
 
-    public void setDepartment_id(int department_id) {
+    public void setDepartment_id(String department_id) {
         this.department_id = department_id;
     }
 

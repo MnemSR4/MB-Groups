@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.ee_exam.ExamTimeActivity">
+
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_text_access_code_time"
+        android:hint="enter access code"/>
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="+"
+        android:textSize="32dp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/button_increase"/>
+
+    <TextView
+        android:id="@+id/text_view_exam_time"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="-"
+        android:textSize="32dp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/button_decrease"/>
+</LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ok"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
+        android:id="@+id/button_ok"/>
+
+</LinearLayout>

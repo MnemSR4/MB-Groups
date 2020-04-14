@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <EditText
+        android:id="@+id/edit_text_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="id"/>
+    <EditText
+        android:id="@+id/edit_text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Subject Name"/>
+
+    <EditText
+        android:id="@+id/edit_text_acces_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="access Code"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exam Time"
+        android:layout_marginBottom="24dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="+"
+            android:textSize="32dp"
+            android:textColor="#FFFFFF"
+            android:background="@color/colorAccent"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/button_increase_add"/>
+
+        <TextView
+            android:id="@+id/text_view_exam_time_add"
+            android:gravity="center"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:textSize="32dp"
+            android:textColor="#FFFFFF"
+            android:background="@color/colorAccent"
+            android:text="-"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:id="@+id/button_decrease_add"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/edit_text_add_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#FFFFFF"
+        android:text="Add"/>
+
+
+
+
+
+</LinearLayout>

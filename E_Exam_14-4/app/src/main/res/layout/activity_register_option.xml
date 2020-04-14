@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+
+    <ImageView
+        android:id="@+id/student_logo"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50sp"
+        android:src="@drawable/student" />
+
+
+    <ImageView
+        android:id="@+id/prof_logo"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:layout_below="@+id/button_student"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30sp"
+        android:src="@drawable/prof" />
+
+
+    <ImageView
+        android:id="@+id/admin_logo"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:layout_below="@+id/button_professor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30sp"
+        android:src="@drawable/admin" />
+
+    <Button
+        android:id="@+id/button_student"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/student_logo"
+        android:layout_centerHorizontal="true"
+        android:background="#37474F"
+        android:text="Student"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/button_professor"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/prof_logo"
+        android:layout_centerHorizontal="true"
+        android:background="#37474F"
+        android:text="professor"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/button_admin"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/admin_logo"
+        android:layout_centerHorizontal="true"
+        android:background="#37474F"
+        android:text="admin"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>
+</ScrollView>

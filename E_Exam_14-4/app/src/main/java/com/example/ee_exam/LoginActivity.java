@@ -11,10 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.ee_exam.Database.SqliteHelper;
-import com.example.ee_exam.Model.Professor;
-import com.example.ee_exam.Model.Student;
-import com.example.ee_exam.Model.User;
+import com.example.ee_exam.DatabaseRegestration.SqliteHelper;
+import com.example.ee_exam.ModelRegistration.Professor;
+import com.example.ee_exam.ModelRegistration.Student;
+import com.example.ee_exam.ModelRegistration.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -78,9 +78,9 @@ public class LoginActivity extends AppCompatActivity {
                 "int", "long", "byte", "float" ,"int"));
 
 
-        helper.addTFQuestion(new TrueFalseQuestion("sub","how are you ?","True"));
-        helper.addTFQuestion(new TrueFalseQuestion("sub","we are 9afwet elkolia w elkoliat elmegawra","False"));
-        helper.addTFQuestion(new TrueFalseQuestion("sub","we love amer abo hani to the moooon ","True"));
+        helper.addTFQuestion(new TrueFalseQuestion("sub","the age is just number","True"));
+        helper.addTFQuestion(new TrueFalseQuestion("sub","the sun rises from the east","False"));
+        helper.addTFQuestion(new TrueFalseQuestion("sub","old is gold ","True"));
 
 
         //sub2 Question
@@ -121,9 +121,9 @@ public class LoginActivity extends AppCompatActivity {
                 "bien", "no estoy bien", "no te concierne", "esta enfermo" ,"bien"));
 
 
-        helper.addTFQuestion(new TrueFalseQuestion("sub2","how are you ?","True"));
-        helper.addTFQuestion(new TrueFalseQuestion("sub2","we are 9afwet elkolia w elkoliat elmegawra","False"));
-        helper.addTFQuestion(new TrueFalseQuestion("sub2","we love amer abo hani to the moooon ","True"));
+        helper.addTFQuestion(new TrueFalseQuestion("sub2","the sun rises from the east ?","True"));
+        helper.addTFQuestion(new TrueFalseQuestion("sub2","old is gold","true"));
+        helper.addTFQuestion(new TrueFalseQuestion("sub2","the age is just number ","True"));
 
 
 

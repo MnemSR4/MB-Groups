@@ -1,9 +1,10 @@
-package com.example.ee_exam.Database;
+package com.example.ee_exam.DatabaseRegestration;
 
-public class DataProfesspor {
+public class DataStudent {
+
 
     //TABLE NAME
-    public static final String TABLE_profssor= "professors";
+    public static final String TABLE_STUDENTS = "stud";
 
     //TABLE USERS COLUMNS
     //ID COLUMN @primaryKey
@@ -14,12 +15,11 @@ public class DataProfesspor {
 
     //COLUMN email
     public static final String KEY_EMAIL = "email";
-
-    //COLUMN Subject
-    public static final String KEY_SUBJECT = "subject";
-
-
     //COLUMN password
     public static final String KEY_PASSWORD = "password";
+    // colum levels
+    public static final String COLUMN_level = "level";
 
+    //colum departments
+    public static final String COLUMN_DEPARTMENT = "department";
 }

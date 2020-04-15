@@ -13,7 +13,7 @@ public class ProfOptionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prof_options);
-            // delet for question ya basant    ياريت نوضح الشغل
+
         Button buttondelete = findViewById(R.id.button_deleteq);
         ////
         Button buttonShow = findViewById(R.id.button_showq);

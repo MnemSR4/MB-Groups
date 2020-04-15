@@ -37,6 +37,6 @@ public class EnterTFQByProf extends AppCompatActivity {
 
             }
         });
-       // Log.i("DBHelper",helper.getAllTFQes(access).toString() );
+
     }
 }

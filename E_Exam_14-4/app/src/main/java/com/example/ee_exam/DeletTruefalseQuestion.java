@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DeletTruefalseQuestion extends AppCompatActivity {
 
+    String access;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,7 @@ public class DeletTruefalseQuestion extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String id = editTextDelete.getText().toString();
-                String access = editTextAccess.getText().toString();
+                 access = editTextAccess.getText().toString();
                 dbHelper.deleteTureFalseQuestion(access,id);
                 Toast.makeText(DeletTruefalseQuestion.this, "deleted", Toast.LENGTH_SHORT).show();
             }
@@ -35,8 +36,8 @@ public class DeletTruefalseQuestion extends AppCompatActivity {
         buttonDeleteAllMCQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = editTextDelete.getText().toString();
-                dbHelper.deleteAllMCQ();
+
+                dbHelper.deleteAllTF(access);
                 Toast.makeText(DeletTruefalseQuestion.this, "deleted", Toast.LENGTH_SHORT).show();
             }
         });

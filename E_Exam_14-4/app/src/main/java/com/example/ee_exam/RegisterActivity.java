@@ -8,10 +8,9 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.example.ee_exam.Database.SqliteHelper;
-import com.example.ee_exam.Model.User;
+import com.example.ee_exam.DatabaseRegestration.SqliteHelper;
+import com.example.ee_exam.ModelRegistration.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 

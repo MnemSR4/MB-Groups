@@ -54,7 +54,7 @@ public class EnterQesByProf extends AppCompatActivity {
             }
         });
 
-//        Log.i("DBHelper",helper.getAllQes(access_code).toString() );
+
 
     }
 }

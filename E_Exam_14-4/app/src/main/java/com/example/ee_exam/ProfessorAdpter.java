@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.ee_exam.Model.Professor;
+import com.example.ee_exam.ModelRegistration.Professor;
 
 import java.util.List;
 

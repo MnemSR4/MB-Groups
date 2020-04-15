@@ -1,4 +1,4 @@
-package com.example.ee_exam.Database;
+package com.example.ee_exam.DatabaseRegestration;
 
 public class Data {
     //TABLE NAME

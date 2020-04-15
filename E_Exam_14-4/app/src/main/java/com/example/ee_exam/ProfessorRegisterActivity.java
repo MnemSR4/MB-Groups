@@ -6,13 +6,11 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ee_exam.Database.SqliteHelper;
-import com.example.ee_exam.Model.Professor;
-import com.example.ee_exam.Database.SqliteHelper;
+import com.example.ee_exam.DatabaseRegestration.SqliteHelper;
+import com.example.ee_exam.ModelRegistration.Professor;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class DeletemcqActivity extends AppCompatActivity {
 
+    String access;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +24,7 @@ public class DeletemcqActivity extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String access =editTextAccess.getText().toString();
+                 access =editTextAccess.getText().toString();
                String id = editTextDelete.getText().toString();
                dbHelper.deleteQues(access, id);
                 Toast.makeText(DeletemcqActivity.this, "deleted", Toast.LENGTH_SHORT).show();
@@ -33,8 +34,8 @@ public class DeletemcqActivity extends AppCompatActivity {
         buttonDeleteAllMCQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = editTextDelete.getText().toString();
-                dbHelper.deleteAllMCQ();
+
+                dbHelper.deleteAllMCQ(access);
                 Toast.makeText(DeletemcqActivity.this, "deleted", Toast.LENGTH_SHORT).show();
             }
         });

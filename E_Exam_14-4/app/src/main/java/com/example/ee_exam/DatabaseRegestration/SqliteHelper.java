@@ -1,4 +1,4 @@
-package com.example.ee_exam.Database;
+package com.example.ee_exam.DatabaseRegestration;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,11 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.ee_exam.ExamContract;
-import com.example.ee_exam.Model.Professor;
-import com.example.ee_exam.Model.Student;
-import com.example.ee_exam.Model.User;
-import com.example.ee_exam.Subject;
+import com.example.ee_exam.ModelRegistration.Professor;
+import com.example.ee_exam.ModelRegistration.Student;
+import com.example.ee_exam.ModelRegistration.User;
 
 import java.util.ArrayList;
 import java.util.List;

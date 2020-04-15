@@ -1,20 +1,21 @@
-package com.example.ee_exam.Model;
+package com.example.ee_exam.ModelRegistration;
 
-public class User {
+public class Professor {
 
     public String id;
     public String userName;
     public String email;
+    public String subjectName;
     public String password;
 
-
-    public User() {
+    public Professor() {
     }
 
-    public User(String id, String userName, String email, String password) {
+    public Professor(String id, String userName, String email, String subjectName, String password) {
         this.id = id;
         this.userName = userName;
         this.email = email;
+        this.subjectName = subjectName;
         this.password = password;
     }
 
@@ -40,6 +41,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     public String getPassword() {

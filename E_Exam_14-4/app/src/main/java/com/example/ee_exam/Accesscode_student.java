@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.ee_exam.Database.SqliteHelper;
+import com.example.ee_exam.DatabaseRegestration.SqliteHelper;
 
 public class Accesscode_student extends AppCompatActivity {
 
@@ -41,7 +41,7 @@ public class Accesscode_student extends AppCompatActivity {
 
       dbHelper.addSubject(new Subject("computer since","sub","1",7200));
         dbHelper.addSubject(new Subject("computer since","sub2","1",7200));
-       // dbHelper.addResult(new Result(1, "5678gvhhch",99));
+
 
         Log.i("main",dbHelper.getAllLevels().toString());
         Log.i("main",dbHelper.getAllDepartments().toString());

@@ -1,4 +1,4 @@
-package com.example.ee_exam.Model;
+package com.example.ee_exam.ModelRegistration;
 
 public class Student {
 

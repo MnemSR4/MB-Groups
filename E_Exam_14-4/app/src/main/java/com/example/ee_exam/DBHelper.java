@@ -10,11 +10,10 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 
-import com.example.ee_exam.Database.Data;
+import com.example.ee_exam.DatabaseRegestration.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import static com.example.ee_exam.ExamContract.*;
 
@@ -57,11 +56,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //create table bta3 result
         String SQL_CREATE_TABLE_RESULT ="CREATE TABLE IF NOT EXISTS " + ResultEntry.TABLE_NAME + "("+
-                ResultEntry.COLUMN_STUDENT_ID +" TEXT NOT NULL ," +
+                ResultEntry.COLUMN_STUDENT_NAME +" TEXT NOT NULL ," +
                 ResultEntry.COLUMN_SUBJECT_ACCESS_CODE +" TEXT NOT NULL," +
                 ResultEntry.COLUMN_MARKS + " INTEGER NOT NULL, " +
                 " FOREIGN KEY (" +
-                ResultEntry.COLUMN_STUDENT_ID + ") REFERENCES "+
+                ResultEntry.COLUMN_STUDENT_NAME + ") REFERENCES "+
                 Data.TABLE_USERS +"(" +
                 Data.KEY_ID +")," +
                 " FOREIGN KEY (" +
@@ -170,7 +169,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.i("DBHelper", "added result....");
     }
 
-    //insert mcq ques
+    //insert mcq ques about access code
     public void addQuestion(Question question) {
 
         ContentValues cv = new ContentValues();
@@ -189,25 +188,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    //insert mcq ques sub2
-    public void addQuestionSub2(QuestionSubject2 questionSubject2) {
-
-        ContentValues cv = new ContentValues();
-        cv.put(QuestionEntry.COLUMN_QUESTION, questionSubject2.getQuestion());
-        cv.put(QuestionEntry.COLUMN_OPTION_1, questionSubject2.getOption_1());
-        cv.put(QuestionEntry.COLUMN_OPTION_2, questionSubject2.getOption_2());
-        cv.put(QuestionEntry.COLUMN_OPTION_3, questionSubject2.getOption_3());
-        cv.put(QuestionEntry.COLUMN_OPTION_4, questionSubject2.getOption_4());
-        cv.put(QuestionEntry.COLUMN_ANSWER, questionSubject2.getAnswer());
-
-        SQLiteDatabase db = getWritableDatabase();
-        db.insert(QuestionEntry.TABLE_NAME, null, cv);
-        db.close();
-        Log.i("DBHelper", "addedsub2....");
-
-    }
-
-    //insert tf ques
+    //insert true false ques about access code
     public void addTFQuestion(TrueFalseQuestion trueFalseQuestion) {
         ContentValues cv = new ContentValues();
         cv.put(TFQuestionEntry.COLUMN_SUBJECT_ACCESS_CODE, trueFalseQuestion.getSubject_access_code());
@@ -221,17 +202,6 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.i("DBHelper", "added3....");
     }
 
-    //insert tf ques sub2
-    public void addTFQuestionSub2(TFQSub2 tfqSub2) {
-        ContentValues cv = new ContentValues();
-        cv.put(TFQuestionEntry.COLUMN_QUESTION, tfqSub2.getQuestion());
-        cv.put(TFQuestionEntry.COLUMN_ANSWER, tfqSub2.getAnswer());
-
-        SQLiteDatabase db = getWritableDatabase();
-        db.insert(TFQuestionEntry.TABLE_NAME, null, cv);
-        db.close();
-        Log.i("DBHelper", "added3sub2....");
-    }
 
     //method select levels (id,name)
     public List<Level> getAllLevels(){
@@ -313,12 +283,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return examTime;
     }
 
-    //method select result (student_id , subject_access_code , marks)
+    //method select result (student_name , subject_access_code , marks)
     public List<Result> getAllResult(){
         List<Result> results =new ArrayList<>();
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor =db.query(ResultEntry.TABLE_NAME,
-                new String[]{ResultEntry.COLUMN_SUBJECT_ACCESS_CODE,ResultEntry.COLUMN_MARKS},
+                new String[]{ResultEntry.COLUMN_STUDENT_NAME ,ResultEntry.COLUMN_SUBJECT_ACCESS_CODE,ResultEntry.COLUMN_MARKS},
                 null,
                 null,
                 null,
@@ -327,19 +297,20 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 results.add(new Result(cursor.getString(0),
-                        cursor.getInt(1)));
+                        cursor.getString(1),
+                        cursor.getInt(2)));
             }
         }
         return results;
     }
-
-    public List<Result> getAllResultById(String id){
+//search student abut name
+    public List<Result> getAllResultById(String name){
         List<Result> resultList =new ArrayList<>();
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor =db.query(ResultEntry.TABLE_NAME,
                 new String[]{ResultEntry.COLUMN_SUBJECT_ACCESS_CODE,ResultEntry.COLUMN_MARKS},
-                ResultEntry.COLUMN_STUDENT_ID +"=?",
-                new String[]{id},
+                ResultEntry.COLUMN_STUDENT_NAME +"=?",
+                new String[]{name},
                 null,
                 null,
                 null);
@@ -376,55 +347,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return trueFalseQuestions;
     }
 
-    //select tf ques sub2
-    public List<TFQSub2> getAllTFQesSub2(){
-        List<TFQSub2> tfqSub2s = new ArrayList<>();
-
-        SQLiteDatabase db = getWritableDatabase();
-        Cursor cursor = db.query(TFQuestionEntry.TABLE_NAME,
-                new String[]{TFQuestionEntry.COLUMN_QUESTION, TFQuestionEntry.COLUMN_ANSWER},
-                null,
-                null,
-                null,
-                null,
-                null);
-
-        if (cursor != null){
-            while (cursor.moveToNext()) {
-                tfqSub2s.add(new TFQSub2(
-                        cursor.getString(0),
-                        cursor.getString(1)));
-
-            }
-        }
-        return tfqSub2s;
-    }
-
-
-    //select tf ques
-    public List<TrueFalseQuestion> getAllTFQesById(String id){
-        List<TrueFalseQuestion> trueFalseQuestionList = new ArrayList<>();
-
-        SQLiteDatabase db = getWritableDatabase();
-        Cursor cursor = db.query(TFQuestionEntry.TABLE_NAME,
-                new String[]{TFQuestionEntry.COLUMN_QUESTION, TFQuestionEntry.COLUMN_ANSWER},
-                TFQuestionEntry.COLUMN_ID +"=?",
-                new String[]{id},
-                null,
-                null,
-                null);
-
-        if (cursor != null){
-            while (cursor.moveToNext()) {
-                trueFalseQuestionList.add(new TrueFalseQuestion(
-                        cursor.getString(0),
-                        cursor.getString(1)));
-
-            }
-        }
-            return trueFalseQuestionList;
-    }
-
 //select mcq ques
     public List<Question> getAllQes(String subject_access_code) {
         List<Question> questions = new ArrayList<>();
@@ -453,51 +375,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return questions;
     }
-
-
-    //select mcq ques sub2
-    public List<QuestionSubject2> getAllQesSub2() {
-        List<QuestionSubject2> questionSubject2ArrayList = new ArrayList<>();
-
-        SQLiteDatabase db = getWritableDatabase();
-        Cursor cursor = db.query(QuestionEntry.TABLE_NAME,
-                new String[]{QuestionEntry.COLUMN_QUESTION, QuestionEntry.COLUMN_OPTION_1, QuestionEntry.COLUMN_OPTION_2, QuestionEntry.COLUMN_OPTION_3, QuestionEntry.COLUMN_OPTION_4, QuestionEntry.COLUMN_ANSWER},
-                null,
-                null,
-                null,
-                null,
-                null);
-
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                questionSubject2ArrayList.add(new QuestionSubject2(
-                        cursor.getString(0),
-                        cursor.getString(1),
-                        cursor.getString(2),
-                        cursor.getString(3),
-                        cursor.getString(4),
-                        cursor.getString(5)));
-
-            }
-        }
-
-        return questionSubject2ArrayList;
-    }
-
-    public void deleteAllMCQ() {
+//delete all mcq
+    public void deleteAllMCQ(String access_code) {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(QuestionEntry.TABLE_NAME,
-                null,
-                null);
+                QuestionEntry.COLUMN_SUBJECT_ACCESS_CODE +"=?",
+                new String[]{access_code});
         db.close();
         Log.i("DBHelper", "deleted....");
     }
-
-    public void deleteAllTF() {
+//delete all true false
+    public void deleteAllTF(String access_code) {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(TFQuestionEntry.TABLE_NAME,
-                null,
-                null);
+                TFQuestionEntry.COLUMN_SUBJECT_ACCESS_CODE + "+?",
+                new String[]{access_code});
         db.close();
         Log.i("DBHelper", "deleted....");
     }
@@ -516,29 +408,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 TFQuestionEntry.COLUMN_SUBJECT_ACCESS_CODE + " =? AND "+ TFQuestionEntry.COLUMN_ID +"=?" ,
                 new String[]{access ,id});
     }
-
-
-    public List<Question> getAllQuestion(String id){
-        List <Question> questions =new ArrayList<>();
-        SQLiteDatabase db =  getReadableDatabase();
-        Cursor cursor =db.query(QuestionEntry.TABLE_NAME ,
-                new String[]{QuestionEntry.COLUMN_QUESTION, QuestionEntry.COLUMN_OPTION_1, QuestionEntry.COLUMN_OPTION_2, QuestionEntry.COLUMN_OPTION_3, QuestionEntry.COLUMN_OPTION_4, QuestionEntry.COLUMN_ANSWER},
-                QuestionEntry.COLUMN_ID +"=?",
-                new String[]{id},
-                null,
-                null,
-                null);
-
-        if(cursor != null && cursor.moveToFirst()){
-            questions.add( new Question(cursor.getString(0),
-                    cursor.getString(1),
-                    cursor.getString(2),
-                    cursor.getString(3),
-                    cursor.getString(4),
-                    cursor.getString(5)));
-        }
-        return questions;
-    }
+    ////////editting////////////
 
     public void updateQuestion(String access ,String id ,String question , String option1 ,String option2, String option3,String option4 ,String answer){
         SQLiteDatabase db =getReadableDatabase();

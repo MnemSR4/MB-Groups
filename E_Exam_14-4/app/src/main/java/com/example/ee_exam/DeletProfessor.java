@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.ee_exam.Database.SqliteHelper;
+import com.example.ee_exam.DatabaseRegestration.SqliteHelper;
 
 public class DeletProfessor extends AppCompatActivity {
 

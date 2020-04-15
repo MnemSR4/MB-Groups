@@ -1,0 +1,34 @@
+E-Exam
+
+Overview:
+E-Exam is a system for student to get their exam online.
+
+-The student can 
+*sign up 
+*sign in
+*finish the exam,submit it and show the result.
+
+-The prfessor can 
+*sign up 
+*sign in
+*add and edit questions 
+*determine the allowed time for the exam
+*show the result of the students for his subjects
+
+-the admin can
+*add and edit levels and departments
+*add and edit subjects 
+*view the list of professors and delete professors
+*all privileges of the professors 
+
+-the structure of exam:
+*the types of questions are MCQ and True & False
+*each student get random Questions
+*each student get random Choices
+*time for the exam
+*the result show the student success or failed 
+
+By : 
+AbdELMnem Moghazy ELMorshidy
+Basant ELSharkawy
+Mostafa AbdelHamed 

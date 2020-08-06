@@ -46,7 +46,6 @@ public class Accesscode_student extends AppCompatActivity {
         Log.i("main",dbHelper.getAllLevels().toString());
         Log.i("main",dbHelper.getAllDepartments().toString());
         Log.i("main" ,dbHelper.getAllSubjects().toString());
-        Log.i("main" ,dbHelper.getAllResult().toString());
         Log.i("main" ,helper.getAllStudents().toString());
 
         final EditText editTextAccessCode=findViewById(R.id.edit_text_access_code_student);

@@ -6,35 +6,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
             android:id="@+id/edit_text_student_id"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-            android:hint="enter student id"/>
+            android:hint="subject accees code"/>
 
         <Button
-            android:id="@+id/button_search_result"
+            android:id="@+id/button_show_results"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
             android:background="@color/colorAccent"
-            android:text="search" />
-
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"
+            android:text="Search" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_show_results"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
-        android:textColor="#FFFFFF"
-        android:padding="8dp"
-        android:text="show all results" />
+
 
     <ListView
         android:layout_width="match_parent"

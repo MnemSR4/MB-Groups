@@ -28,7 +28,7 @@ public class ResultAdabter extends ArrayAdapter <Result> {
         Result currentMCQ =getItem(position);
 
         TextView textViewStudentName =convertView.findViewById(R.id.text_view_student_name_item);
-        textViewStudentName.setText(currentMCQ.getSubject_access_code());
+        textViewStudentName.setText(currentMCQ.getStudent_name());
 
         TextView textViewResult =convertView.findViewById(R.id.text_view_student_result_item);
         textViewResult.setText(String.valueOf(currentMCQ.getMarks()));

@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -25,6 +27,11 @@ public class QuestionSubject2Fragment extends Fragment {
     private String value;
     public static Question questionSubject2;
     RandomNum randomNum;
+    private String value1;
+    private String value2;
+    private String value3;
+    private String value4;
+    StringBuffer buffer = new StringBuffer();
 
     public QuestionSubject2Fragment() {
         // Required empty public constructor
@@ -46,11 +53,10 @@ public class QuestionSubject2Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_qes, container, false);
 
         TextView textViewQues = view.findViewById(R.id.text_view_ques);
-        final RadioGroup radioGroup = view.findViewById(R.id.radio_group);
-        final RadioButton rb1 = view.findViewById(R.id.rb1);
-        final RadioButton rb2 = view.findViewById(R.id.rb2);
-        final RadioButton rb3 = view.findViewById(R.id.rb3);
-        final RadioButton rb4 = view.findViewById(R.id.rb4);
+        final CheckBox chb1 = view.findViewById(R.id.chb1);
+        final CheckBox chb2 = view.findViewById(R.id.chb2);
+        final CheckBox chb3 = view.findViewById(R.id.chb3);
+        final CheckBox chb4 = view.findViewById(R.id.chb4);
         Button buttonNext = view.findViewById(R.id.button_next);
 
         randomNum = new RandomNum();
@@ -60,42 +66,56 @@ public class QuestionSubject2Fragment extends Fragment {
         int[] randomOptions = randomNum.createRD(0, 3);
 
         textViewQues.setText(questionSubject2.getQuestion());
-        rb1.setText(options[randomOptions[0]]);
-        rb2.setText(options[randomOptions[1]]);
-        rb3.setText(options[randomOptions[2]]);
-        rb4.setText(options[randomOptions[3]]);
+        chb1.setText(options[randomOptions[0]]);
+        chb2.setText(options[randomOptions[1]]);
+        chb3.setText(options[randomOptions[2]]);
+        chb4.setText(options[randomOptions[3]]);
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                switch (checkedId) {
-                    case R.id.rb1:
-                        value = rb1.getText().toString();
-                        break;
-                    case R.id.rb2:
-                        value = rb2.getText().toString();
-                        break;
-                    case R.id.rb3:
-                        value = rb3.getText().toString();
-                        break;
-                    case R.id.rb4:
-                        value = rb4.getText().toString();
-                        break;
-
-                }
+        chb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                    value1 = chb1.getText().toString();
+                buffer.append(value1+" ");
             }
         });
 
+        chb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                    value2 = chb2.getText().toString();
+                buffer.append(value2+" ");
+            }
+        });
+
+        chb3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                    value3 = chb3.getText().toString();
+                buffer.append(value3+" ");
+            }
+        });
+
+        chb4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                    value4 = chb4.getText().toString();
+                buffer.append(value4+" ");
+            }
+        });
         buttonNext.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                        listener.onFragmentInteraction(value);
+                        listener.onFragmentInteraction(buffer.toString().trim());
                     }
                 });
 
-        radioGroup.clearCheck();
 
         return view;
 

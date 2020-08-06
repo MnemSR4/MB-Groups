@@ -159,6 +159,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void addResult(Result result) {
 
         ContentValues cv = new ContentValues();
+        cv.put(ResultEntry.COLUMN_STUDENT_NAME, result.getStudent_name());
         cv.put(ResultEntry.COLUMN_SUBJECT_ACCESS_CODE, result.getSubject_access_code());
         cv.put(ResultEntry.COLUMN_MARKS, result.getMarks());
 
@@ -284,13 +285,13 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //method select result (student_name , subject_access_code , marks)
-    public List<Result> getAllResult(){
+    public List<Result> getAllResult(String subject_access_code){
         List<Result> results =new ArrayList<>();
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor =db.query(ResultEntry.TABLE_NAME,
                 new String[]{ResultEntry.COLUMN_STUDENT_NAME ,ResultEntry.COLUMN_SUBJECT_ACCESS_CODE,ResultEntry.COLUMN_MARKS},
-                null,
-                null,
+                ResultEntry.COLUMN_SUBJECT_ACCESS_CODE +"=?",
+                new String[]{subject_access_code},
                 null,
                 null,
                 null);

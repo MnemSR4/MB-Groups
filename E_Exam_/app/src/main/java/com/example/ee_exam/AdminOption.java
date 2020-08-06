@@ -66,5 +66,13 @@ public class AdminOption extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button buttonControlProf = findViewById(R.id.button_edit_sub);
+        buttonControlProf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminOption.this,ProfOptionsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

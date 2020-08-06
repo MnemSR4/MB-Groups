@@ -17,7 +17,7 @@ public class AdminPrivileges extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_privileges);
 
-        name = getIntent().getStringExtra(LoginActivity.EXTRA_NAME);
+        name =getIntent().getStringExtra(LoginActivity.EXTRA_NAME);
         TextView textViewName = findViewById(R.id.text_view_name);
         textViewName.setText(name.substring(0,name.indexOf('@')));
 

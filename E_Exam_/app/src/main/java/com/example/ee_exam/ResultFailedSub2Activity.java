@@ -33,7 +33,7 @@ public class ResultFailedSub2Activity extends AppCompatActivity {
         textViewcorrect.setText(sb2);
         textViewResult.setText(sb2);
        DBHelper dbHelper=new DBHelper(this);
-        dbHelper.addResult(new Result(name.substring(0,name.indexOf('@')),"sub",Score.correct));
+        dbHelper.addResult(new Result(name.substring(0,name.indexOf('@')),"sub2",Score.correct));
 
 
     }
